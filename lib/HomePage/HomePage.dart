@@ -46,55 +46,63 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: CustomBTab(
-        currentIndex: _currentIndex,
-        onTap: _onTabTapped,
-      ),
-      backgroundColor: const Color(0xFFFFEEE1),
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: (){
+        FocusScopeNode currentFocus =FocusScope.of(context);
+        if(!currentFocus.hasPrimaryFocus){
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        bottomNavigationBar: CustomBTab(
+          currentIndex: _currentIndex,
+          onTap: _onTabTapped,
+        ),
         backgroundColor: const Color(0xFFFFEEE1),
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        title: Padding(
-          padding: const EdgeInsets.only(left: 90),
-            child: RichText(
-             text: TextSpan(
-              text: "Pizza",
-              style: GoogleFonts.pacifico(
-                fontSize: 33,
-                color: const Color(0xFF393E46),
-                // fontWeight: FontWeight.bold,
-              ),
-              children: const <TextSpan>[
-                TextSpan(
-                  text: 'hood',
-                  style: TextStyle(
-                    color: Color(0xFFFCB07E),
-                  ),
+        appBar: AppBar(
+          backgroundColor: const Color(0xFFFFEEE1),
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          title: Padding(
+            padding: const EdgeInsets.only(left: 90),
+              child: RichText(
+               text: TextSpan(
+                text: "Pizza",
+                style: GoogleFonts.pacifico(
+                  fontSize: 33,
+                  color: const Color(0xFF393E46),
+                  // fontWeight: FontWeight.bold,
                 ),
-             ],
-             ),
+                children: const <TextSpan>[
+                  TextSpan(
+                    text: 'hood',
+                    style: TextStyle(
+                      color: Color(0xFFFCB07E),
+                    ),
+                  ),
+               ],
+               ),
+              ),
             ),
-          ),
-        iconTheme: const IconThemeData(size: 20),
-        actions: [
-          IconButton(
-          icon: const Icon(Icons.notifications_on_rounded,
-          color:Color(0x69544D4D)),
-          onPressed: () {
-            // Add your action here
-          },
-        ),],
-      ),
-      body: PageView(
-        controller: _pageController,
-        children: [
-          HomeScreen(), // Pass the addToCart method to HomeScreen
-          FavoritesScreen(), // Create this screen
-          CartScreen(), // Pass the cartItems list to CartScreen
-          ProfileScreen(), // Create this screen
-        ],
+          iconTheme: const IconThemeData(size: 20),
+          actions: [
+            IconButton(
+            icon: const Icon(Icons.notifications_on_rounded,
+            color:Color(0x69544D4D)),
+            onPressed: () {
+              // Add your action here
+            },
+          ),],
+        ),
+        body: PageView(
+          controller: _pageController,
+          children: [
+            HomeScreen(), // Pass the addToCart method to HomeScreen
+            FavoritesScreen(), // Create this screen
+            CartScreen(), // Pass the cartItems list to CartScreen
+            ProfileScreen(), // Create this screen
+          ],
+        ),
       ),
     );
   }
