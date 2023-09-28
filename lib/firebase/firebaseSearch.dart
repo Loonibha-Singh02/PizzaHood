@@ -3,31 +3,33 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class FirebaseSearch {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Future<List<DocumentSnapshot>> searchFirestore(String searchText) async {
-    final List<QuerySnapshot> results = await Future.wait([
-      firestore
-          .collection('veg')
-          .where('name', isGreaterThanOrEqualTo: searchText)
-          .where('name', isLessThanOrEqualTo: searchText + '\uf8ff')
-          .get(),
-      firestore
-          .collection('non veg')
-          .where('name', isGreaterThanOrEqualTo: searchText)
-          .where('name', isLessThanOrEqualTo: searchText + '\uf8ff')
-          .get(),
-      firestore
-          .collection('special')
-          .where('name', isGreaterThanOrEqualTo: searchText)
-          .where('name', isLessThanOrEqualTo: searchText + '\uf8ff')
-          .get(),
-    ]);
+  Future<List<String>> searchFirestore(String searchText) async {
+    List<String> titles = [];
 
-    List<DocumentSnapshot> documents = [];
+    final QuerySnapshot vegSnapshot = await firestore
+        .collection('Veg_Pizza')
+        .where('title', isGreaterThanOrEqualTo: searchText)
+        .where('title', isLessThanOrEqualTo: searchText + '\uf8ff')
+        .get();
 
-    for (var result in results) {
-      documents.addAll(result.docs);
-    }
+    titles.addAll(vegSnapshot.docs.map((doc) => doc['title'] as String));
 
-    return documents;
+    final QuerySnapshot nonVegSnapshot = await firestore
+        .collection('NonVeg')
+        .where('title', isGreaterThanOrEqualTo: searchText)
+        .where('title', isLessThanOrEqualTo: searchText + '\uf8ff')
+        .get();
+
+    titles.addAll(nonVegSnapshot.docs.map((doc) => doc['title'] as String));
+
+    final QuerySnapshot specialSnapshot = await firestore
+        .collection('Special_Pizza')
+        .where('title', isGreaterThanOrEqualTo: searchText)
+        .where('title', isLessThanOrEqualTo: searchText + '\uf8ff')
+        .get();
+
+    titles.addAll(specialSnapshot.docs.map((doc) => doc['title'] as String));
+
+    return titles;
   }
 }

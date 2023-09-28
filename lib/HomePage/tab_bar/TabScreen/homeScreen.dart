@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pizza_hood/HomePage/Menu/NonVegMenu/nonVegPizza/Tanno.dart';
-import 'package:pizza_hood/HomePage/search.dart';
 
 import '../../Menu/custom_horizontal_list.dart';
 import '../../Menu/NonVegMenu/nonVegPizza/bacon.dart';
@@ -10,6 +9,7 @@ import '../../Menu/NonVegMenu/non_veg_menu.dart';
 import '../../Menu/SpecialMenu/special.dart';
 import '../../Menu/VegMenu/veg_menu.dart';
 import '../../PopularMenu/custom_popular_menu.dart';
+import '../../SearchData.dart';
 
 class HomeScreen extends StatefulWidget {
 
@@ -29,9 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Search(),
+                  SearchWidget(),
 
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 40),
 
                   SizedBox(
                     width: 100,
@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 80,),
+                  const SizedBox(height: 80,),
                 ],
               )
           ),
