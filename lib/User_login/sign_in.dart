@@ -62,7 +62,7 @@ class _SignUpPageState extends State<SignInPage> {
                           child: Text(
                             "Welcome Back!",
                             style: GoogleFonts.montaguSlab(
-                              fontSize: 30,
+                              fontSize: 40,
                               color: const Color(0xFFFCB07E),
                             ),
                           ),
@@ -70,11 +70,11 @@ class _SignUpPageState extends State<SignInPage> {
                         Text(
                           "Please enter your details.",
                           style: GoogleFonts.montaguSlab(
-                            fontSize: 15,
+                            fontSize: 17,
                             color: const Color(0xFFFCB07E),
                           ),
                         ),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 50),
                         Form(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           key: formKey,
@@ -133,7 +133,7 @@ class _SignUpPageState extends State<SignInPage> {
                                 style: ElevatedButton.styleFrom(
                                   elevation: 0,
                                   backgroundColor: const Color(0xFFFCB07E),
-                                  minimumSize: const Size(150,40),
+                                  minimumSize: const Size(180,50),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   ),
@@ -141,7 +141,7 @@ class _SignUpPageState extends State<SignInPage> {
                                 child: const Text("Sign in",
                                   style: TextStyle(
                                       color: Color(0xFFF3F8F2),
-                                      fontSize: 15
+                                      fontSize: 17
                                   ),
                                 ),
                               ),

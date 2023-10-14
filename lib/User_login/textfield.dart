@@ -39,7 +39,7 @@ class MyTextField extends StatelessWidget {
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 35,
-          vertical: 15,
+          vertical: 20,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),

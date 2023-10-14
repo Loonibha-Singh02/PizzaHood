@@ -56,18 +56,18 @@ class _SignUpPageState extends State<SignUpPage> {
                 Text(
                   "Register here!",
                   style: GoogleFonts.montaguSlab(
-                    fontSize: 30,
+                    fontSize: 40,
                     color: const Color(0xFFFCB07E),
                   ),
                 ),
                 Text(
                   "Please enter your details.",
                   style: GoogleFonts.montaguSlab(
-                    fontSize: 15,
+                    fontSize: 17,
                     color: const Color(0xFFFCB07E),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 40),
                 Form(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   key: formKey,
@@ -155,14 +155,14 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 40),
+                      const SizedBox(height: 50),
 
                       ElevatedButton(
                         onPressed: _signUp,
                         style: ElevatedButton.styleFrom(
                           elevation: 0,
                           backgroundColor: const Color(0xFFFCB07E),
-                          minimumSize: const Size(150,40),
+                          minimumSize: const Size(180,50),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
@@ -170,7 +170,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         child: const Text("Sign Up",
                           style: TextStyle(
                               color: Color(0xFFF3F8F2),
-                              fontSize: 15
+                              fontSize: 17
                           ),
                         ),
                       ),

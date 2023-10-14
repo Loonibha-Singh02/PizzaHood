@@ -24,7 +24,7 @@ class _SearchWidgetState extends State<SearchWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: 320,
-      height: 200,
+      height: 80,
       padding: const EdgeInsets.only(top: 25),
       child: Column(
         children: [
