@@ -23,21 +23,30 @@ class _SearchWidgetState extends State<SearchWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 320,
-      height: 80,
+      width: 375,
+      height: 100,
       padding: const EdgeInsets.only(top: 25),
       child: Column(
         children: [
-          SizedBox(
-            height: 50,
-            child: CupertinoSearchTextField(
-              backgroundColor: Color(0xFFFFD7BD),
-              onChanged: (value) {
-                setState(() {
-                  searchText = value;
-                });
-                performSearch(value);
-              },
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey, // Set the border color
+                width: 1.0, // Set the border width
+              ),
+              borderRadius: BorderRadius.circular(10.0), // Adjust border radius as needed
+            ),
+            child: SizedBox(
+              height: 60,
+              child: CupertinoSearchTextField(
+                backgroundColor: Color(0xFFFFD7BD),
+                onChanged: (value) {
+                  setState(() {
+                    searchText = value;
+                  });
+                  performSearch(value);
+                },
+              ),
             ),
           ),
           if (searchResults.isNotEmpty)

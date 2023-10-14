@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
           automaticallyImplyLeading: false,
           elevation: 0,
           title: Padding(
-            padding: const EdgeInsets.only(left: 90),
+            padding: const EdgeInsets.only(left: 120),
               child: RichText(
                text: TextSpan(
                 text: "Pizza",

@@ -34,11 +34,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 40),
 
                   SizedBox(
-                    width: 100,
+                    width: 150,
                     height: 25,
                     child: Text("OUR MENU",
                       style: GoogleFonts.josefinSans(
-                        fontSize:15,
+                        fontSize:18,
                         color: const Color(0xE2303334),
                         fontWeight: FontWeight.bold,
                       ),
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         "OUR POPULAR PIZZA",
                         style: GoogleFonts.josefinSans(
-                          fontSize: 15,
+                          fontSize: 18,
                           color: const Color(0xE2303334),
                           fontWeight: FontWeight.bold,
                         ),

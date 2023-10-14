@@ -18,7 +18,7 @@ class _CustomHorizontalListState extends State<CustomHorizontalList> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
+      height: 50,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: widget.items.length,
@@ -65,7 +65,7 @@ class CustomHorizontalListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 130,
+      width: 150,
       margin: const EdgeInsets.symmetric(horizontal: 6),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -77,6 +77,7 @@ class CustomHorizontalListItem extends StatelessWidget {
           text,
           style: TextStyle(
             color: selected ? const Color(0xFF393E46) : const Color(0xBB53575D),
+            fontSize: 16
           ),
         ),
       ),
