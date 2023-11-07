@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pizza_hood/HomePage/Menu/customSizeButton.dart';
+import 'package:provider/provider.dart';
+import 'cartModel.dart';
 
 class CusListview extends StatefulWidget {
   final List<Map<String, dynamic>> documents; // Pass the Firestore documents as a parameter
@@ -36,6 +38,27 @@ class _CusListviewState extends State<CusListview> {
       quantityCounts[index]++;
     });
   }
+
+  void addToCart(int index) {
+    final document = widget.documents[index];
+    final title = document['title'] as String;
+    final priceMedium = (document['priceMedium'] as num).toDouble();
+    final priceLarge = (document['priceLarge'] as num).toDouble();
+
+    if (isSelectedListMedium[index]) {
+      // Add the medium item to the cart
+      final cartModel = Provider.of<CartModel>(context, listen: false);
+      cartModel.addToCart(CartItem(title: title, size: 'Medium', price: priceMedium));
+    }
+
+    if (isSelectedListLarge[index]) {
+      // Add the large item to the cart
+      final cartModel = Provider.of<CartModel>(context, listen: false);
+      cartModel.addToCart(CartItem(title: title, size: 'Large', price: priceLarge));
+    }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +119,7 @@ class _CusListviewState extends State<CusListview> {
                               Text(
                                 title,
                                 style: GoogleFonts.abrilFatface(
-                                  fontSize: 16,
+                                  fontSize: 20,
                                   color: const Color(0xE2303334),
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -108,7 +131,7 @@ class _CusListviewState extends State<CusListview> {
                                 child: Text(description,
                                   style: const TextStyle(
                                       color:  Color(0xBB53575D),
-                                      fontSize: 11
+                                      fontSize: 13
                                   ),
                                 ),
                               ),
@@ -145,7 +168,7 @@ class _CusListviewState extends State<CusListview> {
                           ),
                         ),
                       ),
-                    ],
+                    ], 
                   ),
                 ),
 
@@ -191,7 +214,9 @@ class _CusListviewState extends State<CusListview> {
                       child: Row(
                         children: [
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              addToCart(index); // Call the addToCart function when 'Add to cart' is pressed
+                            },
                             child: const Text('Add to cart',
                               style: TextStyle(
                                 fontSize: 15,
@@ -205,8 +230,8 @@ class _CusListviewState extends State<CusListview> {
                           )
                         ],
                       ),
-                    )
-                )
+                    ),
+                ),
             ]
             ),
           );
