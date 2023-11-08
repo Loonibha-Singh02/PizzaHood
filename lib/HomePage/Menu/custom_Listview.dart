@@ -76,138 +76,138 @@ class _CusListviewState extends State<CusListview> {
           return Padding(
             padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
             child: Stack(
-              children: [
-                Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color:  const Color(0xFFFFD7BD),
-                    width: 2, // Border width
-                  ),
-                  color: const Color(0xFFFFD7BD),
-                  borderRadius: BorderRadius.circular(8), // Optional: Add rounded corners
-                ),
+                children: [
+                  Container(
+                    height: 200,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color:  const Color(0xFFFFD7BD),
+                        width: 2, // Border width
+                      ),
+                      color: const Color(0xFFFFD7BD),
+                      borderRadius: BorderRadius.circular(8), // Optional: Add rounded corners
+                    ),
 
-                // child: InkWell(
-                //   onTap: () {
-                //     // Trigger the callback to handle item tap with the item identifier
-                //     widget.onItemClick(title); // Pass the selected item's title
-                //   },
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 120,
-                        height: 200,// Width of the image container
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: Opacity(
-                            opacity: 0.85,
-                            child: Image.network(
-                                imageUrl, // Load the image from the imageUrl field in Firestore
-                                fit: BoxFit.cover, // Set the fit mode (e.g., BoxFit.cover, BoxFit.fill)
-                              )
+                    // child: InkWell(
+                    //   onTap: () {
+                    //     // Trigger the callback to handle item tap with the item identifier
+                    //     widget.onItemClick(title); // Pass the selected item's title
+                    //   },
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 120,
+                          height: 200,// Width of the image container
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: Opacity(
+                                opacity: 0.85,
+                                child: Image.network(
+                                  imageUrl, // Load the image from the imageUrl field in Firestore
+                                  fit: BoxFit.cover, // Set the fit mode (e.g., BoxFit.cover, BoxFit.fill)
+                                )
                             ),
                           ),
                         ),
 
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                title,
-                                style: GoogleFonts.abrilFatface(
-                                  fontSize: 20,
-                                  color: const Color(0xE2303334),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(height:3),
-
-                              Container(
-                                height: 30,
-                                child: Text(description,
-                                  style: const TextStyle(
-                                      color:  Color(0xBB53575D),
-                                      fontSize: 13
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  title,
+                                  style: GoogleFonts.abrilFatface(
+                                    fontSize: 20,
+                                    color: const Color(0xE2303334),
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                              ),
-                              const SizedBox(height:10),
+                                const SizedBox(height:3),
 
-                              //size medium and large
-                              Row(
-                                children: [
-                                  CustomSizeButton(
-                                    text: 'Medium',
-                                    price: isSelectedListMedium[index] ? priceMedium : 0.0,
-                                    isSelected: isSelectedListMedium[index],
-                                    onPressed: () {
-                                      setState(() {
-                                        isSelectedListMedium[index] = !isSelectedListMedium[index];
-                                      });
-                                    },
+                                Container(
+                                  height: 30,
+                                  child: Text(description,
+                                    style: const TextStyle(
+                                        color:  Color(0xBB53575D),
+                                        fontSize: 13
+                                    ),
                                   ),
-                                  const SizedBox(width: 15),
+                                ),
+                                const SizedBox(height:10),
 
-                                  CustomSizeButton(
-                                    text: 'Large',
-                                    price: isSelectedListLarge[index] ? priceLarge : 0.0,
-                                    isSelected: isSelectedListLarge[index],
-                                    onPressed: () {
-                                      setState(() {
-                                        isSelectedListLarge[index] = !isSelectedListLarge[index];
-                                      });
-                                    },
-                                  )
-                                ],
-                              ),
-                            ],
+                                //size medium and large
+                                Row(
+                                  children: [
+                                    CustomSizeButton(
+                                      text: 'Medium',
+                                      price: isSelectedListMedium[index] ? priceMedium : 0.0,
+                                      isSelected: isSelectedListMedium[index],
+                                      onPressed: () {
+                                        setState(() {
+                                          isSelectedListMedium[index] = !isSelectedListMedium[index];
+                                        });
+                                      },
+                                    ),
+                                    const SizedBox(width: 15),
+
+                                    CustomSizeButton(
+                                      text: 'Large',
+                                      price: isSelectedListLarge[index] ? priceLarge : 0.0,
+                                      isSelected: isSelectedListLarge[index],
+                                      onPressed: () {
+                                        setState(() {
+                                          isSelectedListLarge[index] = !isSelectedListLarge[index];
+                                        });
+                                      },
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ], 
+                      ],
+                    ),
                   ),
-                ),
 
-                //quantity add and remove
-                Positioned(
-                  bottom: 35,
-                  left: 115,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      IconButton(
-                          icon: const Icon(Icons.remove,
-                            color: Color(0xBB53575D),
-                            size: 15,
-                          ),
-                          onPressed: () => decrementQuantity(index)
-                      ),
-                      SizedBox(
-                        width: 20,
-                        child: Center(
-                          child: Text(quantityCounts[index].toString(),
-                            style: const TextStyle(
-                              fontSize: 15,
+                  //quantity add and remove
+                  Positioned(
+                    bottom: 35,
+                    left: 115,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        IconButton(
+                            icon: const Icon(Icons.remove,
                               color: Color(0xBB53575D),
+                              size: 15,
+                            ),
+                            onPressed: () => decrementQuantity(index)
+                        ),
+                        SizedBox(
+                          width: 20,
+                          child: Center(
+                            child: Text(quantityCounts[index].toString(),
+                              style: const TextStyle(
+                                fontSize: 15,
+                                color: Color(0xBB53575D),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      IconButton(
+                        IconButton(
                           icon: const Icon(Icons.add,
                             color: Color(0xBB53575D),
                             size: 15,
                           ),
                           onPressed: () => incrementQuantity(index),
-                      ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Positioned(
+                  Positioned(
                     bottom:0,
                     right: 10,
                     child: Container(
@@ -231,8 +231,8 @@ class _CusListviewState extends State<CusListview> {
                         ],
                       ),
                     ),
-                ),
-            ]
+                  ),
+                ]
             ),
           );
         },

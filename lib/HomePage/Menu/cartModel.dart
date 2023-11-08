@@ -11,11 +11,12 @@ class CartItem {
     required this.price,
   });
 }
+
 class CartModel extends ChangeNotifier {
   final List<CartItem> cart = [];
 
   void addToCart(CartItem item) {
-    cart.add(item);
+      cart.add(item);
     notifyListeners();
   }
 
