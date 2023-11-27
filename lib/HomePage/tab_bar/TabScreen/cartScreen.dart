@@ -14,6 +14,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final cart = context.watch<CartModel>();
+    final totalPrice = cart.getTotalPrice();
 
     return Scaffold(
       backgroundColor: const Color(0xFFFFEEE1),
@@ -106,7 +107,14 @@ class _CartScreenState extends State<CartScreen> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                child: const Text("Done"),
+                child:Text(
+                  'Total: Rs ${totalPrice.toStringAsFixed(2)}',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
               ),
 
             ),

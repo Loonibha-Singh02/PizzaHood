@@ -24,4 +24,13 @@ class CartModel extends ChangeNotifier {
     cart.remove(item);
     notifyListeners();
   }
+
+  double getTotalPrice(){
+    double totalPrice= 0.0;
+    for(var item in cart){
+      totalPrice += item.price;
+    }
+    return totalPrice;
+  }
+
 }

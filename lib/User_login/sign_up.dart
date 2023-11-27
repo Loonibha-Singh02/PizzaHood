@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final FirebaseAuthService _auth= FirebaseAuthService();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController fullController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
@@ -24,9 +26,23 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   void dispose() {
+    fullController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
+  }
+
+  Future<void> addUserDetails(String fullname, String email) async {
+    try {
+      await FirebaseFirestore.instance.collection('Users').add({
+        'Full name': fullname,
+        'Email': email,
+        // Add more user details as needed
+      });
+    } catch (e) {
+      print("Error adding user details to Firestore: $e");
+      // Handle Firestore data addition error
+    }
   }
 
   @override
@@ -73,6 +89,25 @@ class _SignUpPageState extends State<SignUpPage> {
                   key: formKey,
                   child: Column(
                     children: [
+                      MyTextField(
+                        hintText: 'Full name',
+                        labelColor: const  Color(0xFFFCB07E),
+                        hintColor: const  Color(0xFFFCB07E),
+                        labelText: 'Full name',
+                        controller: fullController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your username';
+                          }
+                          // Add more email validation logic here if needed
+                          return null;
+                        },
+                        suffixIcon: const Icon(Icons.person,
+                          color: Color(0xFFFCB07E),),
+                        obscureText: false,
+                      ),
+                      const SizedBox(height: 20),
+
                       MyTextField(
                         hintText: 'Email',
                         labelColor: const  Color(0xFFFCB07E),
@@ -208,19 +243,27 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  void _signUp() async{
+  void _signUp() async {
+    String fullName = fullController.text;
     String email = emailController.text;
-    String password = passwordController.text;
 
-    User? user = await _auth.signUpWithEmailAndPassword(email, password);
+    User? user = await _auth.signUpWithEmailAndPassword(
+      emailController.text,
+      passwordController.text,
+    );
 
-    if(user!=null){
-      print("Successful");
-      Navigator.pushNamed(context, "/Home");
-    }
-    else{
-      print("Some error happened");
+    if (user != null) {
+      try {
+        await addUserDetails(fullName, email);
+        print("Successful signup and user details added to Firestore");
+        Navigator.pushNamed(context, "/Home");
+      } catch (e) {
+        print("Error adding user details to Firestore: $e");
+        // Handle Firestore data addition error
+      }
+    } else {
+      print("Some error happened during signup");
+      // Handle signup error
     }
   }
-
 }

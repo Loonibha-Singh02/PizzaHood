@@ -219,7 +219,7 @@ class _CusListviewState extends State<CusListview> {
                             },
                             child: const Text('Add to cart',
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 15,
                                 color: Color(0xBB53575D),
                               ),
                             ),
