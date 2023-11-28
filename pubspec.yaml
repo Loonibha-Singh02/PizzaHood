@@ -44,6 +44,7 @@ dependencies:
   cloud_firestore: ^4.9.1
   firebase_storage: ^11.2.6
   image_picker: ^1.0.4
+  get: ^4.6.6
   provider:
 
 dev_dependencies:
