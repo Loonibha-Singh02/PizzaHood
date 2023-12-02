@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'adminPanel/adminWelcome/adminWelcomePage.dart';
-
-class WelcomePage extends StatefulWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+class AdminWelcomePage extends StatefulWidget {
+  const AdminWelcomePage({Key? key}) : super(key: key);
 
   @override
-  State<WelcomePage> createState() => _WelcomePageState();
+  State<AdminWelcomePage> createState() => _WelcomePageState();
 }
 
-class _WelcomePageState extends State<WelcomePage> {
+class _WelcomePageState extends State<AdminWelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +24,17 @@ class _WelcomePageState extends State<WelcomePage> {
               height: MediaQuery.of(context).size.height,
               child: Stack(
                 children: [
+                  Positioned(
+                      top: 200,
+                      left: 140,
+                      child: Text(
+                        "Welcome admin",
+                        style: GoogleFonts.aBeeZee(
+                          fontSize:20,
+                          color: const Color(0x69544D4D),
+                        ),
+                      )
+                  ),
                   Positioned(
                       top: 250.h,
                       right: 20.w,
@@ -45,7 +54,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       child: Text(
                         "Find your perfect place to eat, meet and enjoy.",
                         style: GoogleFonts.aBeeZee(
-                            fontSize:15.sp,
+                          fontSize:15.sp,
                           color: const Color(0x69544D4D),
                         ),
                       )
@@ -61,7 +70,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           children: [
                             ElevatedButton(
                               onPressed: (){
-                                Navigator.pushNamed(context, '/Signin');
+                                Navigator.pushNamed(context, '/AdminSignin');
                               },
                               style: ElevatedButton.styleFrom(
                                 textStyle: TextStyle(
@@ -82,7 +91,7 @@ class _WelcomePageState extends State<WelcomePage> {
 
                             OutlinedButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, '/Signup');
+                                Navigator.pushNamed(context, '/AdminSignup');
                               },
                               style: OutlinedButton.styleFrom(
                                 elevation:0,
@@ -104,32 +113,6 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       )
                   ),
-                  Positioned(
-                    bottom: 10,
-                    right: 30,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/Admin');
-                          },
-                          child: Text(
-                            "Admin",
-                            style: TextStyle(
-                              color: Color(0xFFFCB07E),
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: Color(0xFFFCB07E),
-                          size: 15,// Change color as needed
-                        ),
-                      ],
-                    ),
-                  )
 
                 ],
               ),
