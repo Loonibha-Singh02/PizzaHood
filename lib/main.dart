@@ -2,16 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:pizza_hood/adminPanel/adminWelcome/adminWelcomePage.dart';
+import 'package:pizza_hood/HomePage/tab_bar/TabScreen/uploadImage.dart';
 import 'package:provider/provider.dart'; // Import Provider
 import 'package:pizza_hood/HomePage/HomePage.dart';
 import 'package:pizza_hood/User_login/sign_in.dart';
 import 'package:pizza_hood/User_login/sign_up.dart';
 import 'package:pizza_hood/welcome.dart';
 import 'HomePage/Menu/cartModel.dart';
-import 'adminPanel/AdminLogin/AdminSignUp.dart';
-import 'adminPanel/AdminLogin/AdminSignin.dart';
-import 'adminPanel/adminMainPage/adminMain.dart';
 
 
 void main() async {
@@ -40,10 +37,6 @@ class MyApp extends StatelessWidget {
               '/Signin': (context) => const SignInPage(),
               '/Signup': (context) => const SignUpPage(),
               '/Home': (context) => HomePage(),
-              '/Admin': (context) => AdminWelcomePage(),
-              '/AdminSignin': (context) => const AdminSignInPage(),
-              '/AdminSignup': (context) => const AdminSignUpPage(),
-              '/AdminHome': (context) => AdminMainPage(),
             },
           ),
         );

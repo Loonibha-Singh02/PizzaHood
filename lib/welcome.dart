@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'adminPanel/adminWelcome/adminWelcomePage.dart';
-
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
 
@@ -104,33 +102,6 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       )
                   ),
-                  Positioned(
-                    bottom: 10,
-                    right: 30,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/Admin');
-                          },
-                          child: Text(
-                            "Admin",
-                            style: TextStyle(
-                              color: Color(0xFFFCB07E),
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: Color(0xFFFCB07E),
-                          size: 15,// Change color as needed
-                        ),
-                      ],
-                    ),
-                  )
-
                 ],
               ),
             )
