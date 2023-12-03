@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_hood/HomePage/tab_bar/TabScreen/uploadImage.dart';
-import 'package:pizza_hood/firebase/firebase_auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
