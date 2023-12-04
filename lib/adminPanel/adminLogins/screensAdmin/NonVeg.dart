@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NonVegScreen extends StatefulWidget {
@@ -10,6 +10,29 @@ class NonVegScreen extends StatefulWidget {
 }
 
 class _NonVegScreenState extends State<NonVegScreen> {
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _priceLargeController = TextEditingController();
+  final TextEditingController _priceMediumController = TextEditingController();
+
+  Future<void> updateNonVeg(String itemId) async {
+    final CollectionReference nonVegItems =
+    FirebaseFirestore.instance.collection('NonVeg');
+
+    await nonVegItems.doc(itemId).update({
+      'title': _titleController.text,
+      'description': _descriptionController.text,
+      'priceLarge': _priceLargeController.text,
+      'priceMedium': _priceMediumController.text,
+    });
+
+    // Clear text fields after update
+    _titleController.clear();
+    _descriptionController.clear();
+    _priceLargeController.clear();
+    _priceMediumController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,8 +46,8 @@ class _NonVegScreenState extends State<NonVegScreen> {
             color: const Color(0xFF393E46),
           ),
         ),
-        iconTheme: const IconThemeData(color: Colors.black38), // Back button arrow color
-        backgroundColor: const Color(0xFFFFEEE1), // App bar background color
+        iconTheme: const IconThemeData(color: Colors.black38),
+        backgroundColor: const Color(0xFFFFEEE1),
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('NonVeg').snapshots(),
@@ -38,7 +61,7 @@ class _NonVegScreenState extends State<NonVegScreen> {
             padding: const EdgeInsets.all(20),
             children: snapshot.data!.docs.map((doc) {
               return SizedBox(
-                height: 150, // Set the desired height for the card
+                height: 450,
                 child: Card(
                   elevation: 3,
                   margin: const EdgeInsets.symmetric(vertical: 8.0),
@@ -64,7 +87,6 @@ class _NonVegScreenState extends State<NonVegScreen> {
                           'Description: ${doc['description']}',
                           style: const TextStyle(fontSize: 16, color: Colors.white),
                         ),
-                        const SizedBox(height: 8),
                         Text(
                           'Price Large: Rs ${doc['priceLarge']}',
                           style: const TextStyle(fontSize: 14, color: Colors.white),
@@ -72,6 +94,73 @@ class _NonVegScreenState extends State<NonVegScreen> {
                         Text(
                           'Price Medium: Rs ${doc['priceMedium']}',
                           style: const TextStyle(fontSize: 14, color: Colors.white),
+                        ),
+                        const SizedBox(height: 16),
+                        TextField(
+                          controller: _titleController,
+                          decoration: const InputDecoration(
+                            labelText: 'New Title',
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(height: 8),
+                        TextField(
+                          controller: _descriptionController,
+                          decoration: const InputDecoration(
+                            labelText: 'New Description',
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(height: 8),
+                        TextField(
+                          controller: _priceLargeController,
+                          decoration: const InputDecoration(
+                            labelText: 'New Price Large',
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(height: 8),
+                        TextField(
+                          controller: _priceMediumController,
+                          decoration: const InputDecoration(
+                            labelText: 'New Price Medium',
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(height: 8),
+                        ElevatedButton(
+                          onPressed: () {
+                            updateNonVeg(doc.id);
+                          },
+                          child: const Text('Update'),
                         ),
                       ],
                     ),

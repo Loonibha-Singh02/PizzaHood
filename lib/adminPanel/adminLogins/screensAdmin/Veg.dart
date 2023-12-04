@@ -8,6 +8,28 @@ class VegScreen extends StatefulWidget {
 }
 
 class _VegScreenState extends State<VegScreen> {
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _priceLargeController = TextEditingController();
+  final TextEditingController _priceMediumController = TextEditingController();
+
+  Future<void> updateVegPizza(String itemId) async {
+    final CollectionReference vegPizzaItems =
+    FirebaseFirestore.instance.collection('Veg_Pizza');
+
+    await vegPizzaItems.doc(itemId).update({
+      'title': _titleController.text,
+      'description': _descriptionController.text,
+      'priceLarge': _priceLargeController.text,
+      'priceMedium': _priceMediumController.text,
+    });
+
+    _titleController.clear();
+    _descriptionController.clear();
+    _priceLargeController.clear();
+    _priceMediumController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +43,7 @@ class _VegScreenState extends State<VegScreen> {
         ),
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black38),
-        backgroundColor: const Color(0xFFFFEEE1), // App bar background color
+        backgroundColor: const Color(0xFFFFEEE1),
       ),
       backgroundColor: const Color(0xFFFFEEE1),
       body: StreamBuilder(
@@ -36,7 +58,7 @@ class _VegScreenState extends State<VegScreen> {
             padding: const EdgeInsets.all(20),
             children: snapshot.data!.docs.map((doc) {
               return Container(
-                height: 150, // Set the desired height for the card
+                height: 450,
                 child: Card(
                   elevation: 3,
                   margin: const EdgeInsets.symmetric(vertical: 8.0),
@@ -62,6 +84,7 @@ class _VegScreenState extends State<VegScreen> {
                           'Description: ${doc['description']}',
                           style: const TextStyle(fontSize: 16, color: Colors.white),
                         ),
+                        const SizedBox(height: 8),
                         Text(
                           'Price Large: Rs ${doc['priceLarge']}',
                           style: const TextStyle(fontSize: 14, color: Colors.white),
@@ -69,6 +92,73 @@ class _VegScreenState extends State<VegScreen> {
                         Text(
                           'Price Medium: Rs ${doc['priceMedium']}',
                           style: const TextStyle(fontSize: 14, color: Colors.white),
+                        ),
+                        const SizedBox(height: 16),
+                        TextField(
+                          controller: _titleController,
+                          decoration: const InputDecoration(
+                            labelText: 'New Title',
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(height: 8),
+                        TextField(
+                          controller: _descriptionController,
+                          decoration: const InputDecoration(
+                            labelText: 'New Description',
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(height: 8),
+                        TextField(
+                          controller: _priceLargeController,
+                          decoration: const InputDecoration(
+                            labelText: 'New Price Large',
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(height: 8),
+                        TextField(
+                          controller: _priceMediumController,
+                          decoration: const InputDecoration(
+                            labelText: 'New Price Medium',
+                            labelStyle: TextStyle(color: Colors.white),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(height: 8),
+                        ElevatedButton(
+                          onPressed: () {
+                            updateVegPizza(doc.id);
+                          },
+                          child: const Text('Update'),
                         ),
                       ],
                     ),
