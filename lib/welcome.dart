@@ -19,11 +19,11 @@ class _WelcomePageState extends State<WelcomePage> {
   void initState() {
     super.initState();
     notificationService.requestNotificationPermission();
-    // notificationService.firebaseInit();
-    // notificationService.getDeviceToken().then((value){
-    //   print('Device token:');
-    //   print(value);
-    // });
+    notificationService.firebaseInit();
+    notificationService.getDeviceToken().then((value){
+      print('Device token:');
+      print(value);
+    });
   }
 
   @override

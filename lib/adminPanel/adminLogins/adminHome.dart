@@ -4,7 +4,7 @@ import 'package:pizza_hood/adminPanel/adminLogins/screensAdmin/NonVeg.dart';
 import 'package:pizza_hood/adminPanel/adminLogins/screensAdmin/User.dart';
 import 'package:pizza_hood/adminPanel/adminLogins/screensAdmin/Veg.dart';
 import 'package:pizza_hood/adminPanel/adminLogins/screensAdmin/special.dart';
-import 'package:pizza_hood/adminPanel/notification.dart';
+import 'package:pizza_hood/adminPanel/adminNotification.dart';
 
 class AdminHomePage extends StatefulWidget {
   const AdminHomePage({super.key});

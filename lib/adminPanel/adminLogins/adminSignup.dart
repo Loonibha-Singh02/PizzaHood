@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,25 +33,13 @@ class _SignUpPageState extends State<AdminSignUpPage> {
     super.dispose();
   }
 
-  Future<void> addUserDetails(
-      String fullname, String email, String? deviceToken) async {
+  Future<void> addUserDetails(String fullname, String email) async {
     try {
-      DocumentReference userDoc = 
-      await FirebaseFirestore.instance.collection('Admin').add({
+      await FirebaseFirestore.instance.collection('Users').add({
         'Full name': fullname,
         'Email': email,
         // Add more user details as needed
       });
-
-      // Store device token in a separate collection (e.g., 'UserTokens')
-      if (deviceToken != null) {
-        await FirebaseFirestore.instance
-            .collection('AdminTokens')
-            .doc(userDoc.id)
-            .set({
-          'user-token': deviceToken,
-        });
-      }
     } catch (e) {
       print("Error adding user details to Firestore: $e");
       // Handle Firestore data addition error
@@ -268,15 +255,9 @@ class _SignUpPageState extends State<AdminSignUpPage> {
 
     if (user != null) {
       try {
-        // Get device token
-        String? deviceToken =
-        await FirebaseMessaging.instance.getToken();
-
-        // Add user details and device token to Firestore
-        await addUserDetails(fullName, email, deviceToken);
-
+        await addUserDetails(fullName, email);
         print("Successful signup and user details added to Firestore");
-        Navigator.pushNamed(context, "/Admin");
+        Navigator.pushNamed(context, "/Home");
       } catch (e) {
         print("Error adding user details to Firestore: $e");
         // Handle Firestore data addition error

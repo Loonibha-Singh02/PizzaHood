@@ -59,10 +59,10 @@ class _CartScreenState extends State<CartScreen> {
                                   ),
                                 ),
                                 Text('Rs ${item.price.toStringAsFixed(2)}',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: const Color(0xBB53575D),
-                                ),),
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: const Color(0xBB53575D),
+                                  ),),
                               ],
                             ),
                           ),
@@ -70,13 +70,13 @@ class _CartScreenState extends State<CartScreen> {
                             top: 35,
                             right: 10,
                             child:
-                                IconButton(
-                                  icon: const Icon(Icons.delete),
-                                  onPressed: () {
-                                    // Remove the item from the cart when delete is pressed
-                                    context.read<CartModel>().removeFromCart(item);
-                                  },
-                                ),
+                            IconButton(
+                              icon: const Icon(Icons.delete),
+                              onPressed: () {
+                                // Remove the item from the cart when delete is pressed
+                                context.read<CartModel>().removeFromCart(item);
+                              },
+                            ),
                           ),
                         ],
                       ),
@@ -96,7 +96,7 @@ class _CartScreenState extends State<CartScreen> {
                 },
                 style: ElevatedButton.styleFrom(
                   textStyle: TextStyle(
-                      fontSize: 20,
+                    fontSize: 20,
                   ),
                   elevation: 0,
                   backgroundColor: const Color(0xBB53575D),
