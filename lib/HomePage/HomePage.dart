@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pizza_hood/HomePage/notificationUser.dart';
 import 'package:pizza_hood/HomePage/tab_bar/TabScreen/cartScreen.dart';
 import 'package:pizza_hood/HomePage/tab_bar/TabScreen/favScreen.dart';
 import 'package:pizza_hood/HomePage/tab_bar/TabScreen/homeScreen.dart';
@@ -90,7 +91,10 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(Icons.notifications_on_rounded,
             color:Color(0x69544D4D)),
             onPressed: () {
-              // Add your action here
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>UserNotification()),
+              );
             },
           ),],
         ),

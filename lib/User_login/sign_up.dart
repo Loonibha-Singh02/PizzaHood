@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +16,6 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final FirebaseAuthService _auth= FirebaseAuthService();
-
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController fullController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -32,18 +32,31 @@ class _SignUpPageState extends State<SignUpPage> {
     super.dispose();
   }
 
-  Future<void> addUserDetails(String fullname, String email) async {
+  Future<void> addUserDetails(
+      String fullname, String email, String? deviceToken) async {
     try {
+      DocumentReference userDoc =
       await FirebaseFirestore.instance.collection('Users').add({
         'Full name': fullname,
         'Email': email,
         // Add more user details as needed
       });
+
+      // Store device token in a separate collection (e.g., 'UserTokens')
+      if (deviceToken != null) {
+        await FirebaseFirestore.instance
+            .collection('UserTokens')
+            .doc(userDoc.id)
+            .set({
+          'user-token': deviceToken,
+        });
+      }
     } catch (e) {
       print("Error adding user details to Firestore: $e");
       // Handle Firestore data addition error
     }
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -254,7 +267,13 @@ class _SignUpPageState extends State<SignUpPage> {
 
     if (user != null) {
       try {
-        await addUserDetails(fullName, email);
+        // Get device token
+        String? deviceToken =
+        await FirebaseMessaging.instance.getToken();
+
+        // Add user details and device token to Firestore
+        await addUserDetails(fullName, email, deviceToken);
+
         print("Successful signup and user details added to Firestore");
         Navigator.pushNamed(context, "/Home");
       } catch (e) {

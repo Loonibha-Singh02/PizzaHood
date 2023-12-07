@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pizza_hood/adminPanel/adminLogins/adWelpg.dart';
-
-import 'adminPanel/adminLogins/adminSignup.dart';
+import 'package:pizza_hood/firebase/notifyService.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -13,6 +12,20 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+
+  NotificationService notificationService = NotificationService();
+
+  @override
+  void initState() {
+    super.initState();
+    notificationService.requestNotificationPermission();
+    // notificationService.firebaseInit();
+    // notificationService.getDeviceToken().then((value){
+    //   print('Device token:');
+    //   print(value);
+    // });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

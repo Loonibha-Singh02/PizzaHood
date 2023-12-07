@@ -4,6 +4,7 @@ import 'package:pizza_hood/adminPanel/adminLogins/screensAdmin/NonVeg.dart';
 import 'package:pizza_hood/adminPanel/adminLogins/screensAdmin/User.dart';
 import 'package:pizza_hood/adminPanel/adminLogins/screensAdmin/Veg.dart';
 import 'package:pizza_hood/adminPanel/adminLogins/screensAdmin/special.dart';
+import 'package:pizza_hood/adminPanel/notification.dart';
 
 class AdminHomePage extends StatefulWidget {
   const AdminHomePage({super.key});
@@ -48,7 +49,10 @@ class _AdminHomePageState extends State<AdminHomePage> {
             icon: const Icon(Icons.notifications_on_rounded,
                 color:Color(0x69544D4D)),
             onPressed: () {
-              // Add your action here
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AdminNotificationScreen()),
+              );
             },
           ),],
       ),
