@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Menu/cartModel.dart';
 
 class CartScreen extends StatefulWidget {
@@ -91,8 +92,19 @@ class _CartScreenState extends State<CartScreen> {
               width: 200, // Set the width to match the parent width
               height: 50, // Set the desired height
               child:  ElevatedButton(
-                onPressed: (){
+                onPressed: () async{
+                  final cartItems = cart.cart
+                      .map((item) =>
+                  'Luniva Singh ordered ${item.title} - ${item.size} - ${item.price.toStringAsFixed(2)}')
+                      .toList();
 
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.setStringList('cartData', cartItems);
+
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => AdminNotificationScreen()),
+                  // );
                 },
                 style: ElevatedButton.styleFrom(
                   textStyle: TextStyle(

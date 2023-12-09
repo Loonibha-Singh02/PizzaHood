@@ -11,6 +11,7 @@ import 'HomePage/Menu/cartModel.dart';
 import 'adminPanel/adminLogins/adminHome.dart';
 import 'adminPanel/adminLogins/adminSignin.dart';
 import 'adminPanel/adminLogins/adminSignup.dart';
+import 'adminPanel/adminNotification.dart';
 
 
 void main() async {
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MultiProvider( // Wrap your app with MultiProvider
           providers: [
-            ChangeNotifierProvider(create: (_) => CartModel()), // Provide CartModel
+            ChangeNotifierProvider(create: (_) => CartModel()),
           ],
           child: GetMaterialApp(
             debugShowCheckedModeBanner: false,

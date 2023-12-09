@@ -9,6 +9,7 @@ class UserNotification extends StatefulWidget {
 }
 
 class _UserNotificationState extends State<UserNotification> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

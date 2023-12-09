@@ -6,6 +6,8 @@ import 'package:pizza_hood/adminPanel/adminLogins/screensAdmin/Veg.dart';
 import 'package:pizza_hood/adminPanel/adminLogins/screensAdmin/special.dart';
 import 'package:pizza_hood/adminPanel/adminNotification.dart';
 
+import '../../welcome.dart';
+
 class AdminHomePage extends StatefulWidget {
   const AdminHomePage({super.key});
 
@@ -14,6 +16,17 @@ class AdminHomePage extends StatefulWidget {
 }
 
 class _AdminHomePageState extends State<AdminHomePage> {
+
+  void _logout() {
+    // Navigate to the welcome screen or login screen
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => WelcomePage()), // Replace WelcomeScreen with your welcome/login screen
+          (route) => false, // Clear all routes on the stack
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +36,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
         automaticallyImplyLeading: false,
         elevation: 0,
         title: Padding(
-          padding: const EdgeInsets.only(left: 120),
+          padding: const EdgeInsets.only(left: 70),
           child: RichText(
             text: TextSpan(
               text: "Pizza",
@@ -44,17 +57,23 @@ class _AdminHomePageState extends State<AdminHomePage> {
           ),
         ),
         iconTheme: const IconThemeData(size: 20),
+        leading: IconButton(
+          icon: const Icon(Icons.notifications_on_rounded,
+              color:Color(0x69544D4D)),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AdminNotificationScreen()),
+            );
+          },
+        ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.notifications_on_rounded,
+            icon: const Icon(Icons.logout,
                 color:Color(0x69544D4D)),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AdminNotificationScreen()),
-              );
-            },
-          ),],
+            onPressed: _logout,
+          ),
+        ],
       ),
       body: Container(
         padding: EdgeInsets.only(top: 50),
@@ -121,7 +140,6 @@ class _AdminHomePageState extends State<AdminHomePage> {
               ),
               child: Text('Special'),
             ),
-
           ],
         ),
       ),
