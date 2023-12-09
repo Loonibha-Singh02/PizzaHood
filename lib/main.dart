@@ -12,6 +12,7 @@ import 'adminPanel/adminLogins/adminHome.dart';
 import 'adminPanel/adminLogins/adminSignin.dart';
 import 'adminPanel/adminLogins/adminSignup.dart';
 import 'adminPanel/adminNotification.dart';
+import 'adminPanel/notifier.dart';
 
 
 void main() async {
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         return MultiProvider( // Wrap your app with MultiProvider
           providers: [
             ChangeNotifierProvider(create: (_) => CartModel()),
+            ChangeNotifierProvider(create: (_) => NotificationProvider()),
           ],
           child: GetMaterialApp(
             debugShowCheckedModeBanner: false,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pizza_hood/adminPanel/notifier.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AdminNotificationScreen extends StatefulWidget {
@@ -32,6 +34,16 @@ class _AdminNotificationScreenState extends State<AdminNotificationScreen> {
     setState(() {
       adminCartItems = [];
     });
+  }
+
+  void handleOrderAccepted(int index) {
+    String message = 'Order Accepted for: ${adminCartItems[index]}';
+    Provider.of<NotificationProvider>(context, listen: false).sendMessage(message);
+  }
+
+  void handleOrderReady(int index) {
+    String message = 'Order Ready for: ${adminCartItems[index]}';
+    Provider.of<NotificationProvider>(context, listen: false).sendMessage(message);
   }
 
   @override
@@ -125,7 +137,30 @@ class _AdminNotificationScreenState extends State<AdminNotificationScreen> {
                     color: Colors.black54
                   ),
                 ),
-
+                SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        handleOrderAccepted(index);
+                      },
+                      child: Text('Order Accepted'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black38,
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        handleOrderReady(index);
+                      },
+                      child: Text('Order Ready'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black38,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           );
