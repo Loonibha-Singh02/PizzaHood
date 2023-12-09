@@ -36,7 +36,7 @@ class _CustomBTabState extends State<CustomBTab> {
             tabBorderRadius: 22,
             curve: Curves.decelerate,
             duration: Duration(milliseconds: 500),
-            gap: 2,
+            gap:3,
             activeColor: Color(0xFFFFEEE1),
             iconSize: 24,
             tabBackgroundColor: Color(0xFF393E46),
@@ -45,10 +45,6 @@ class _CustomBTabState extends State<CustomBTab> {
               GButton(
                 icon: LineIcons.home,
                 text: 'Home',
-              ),
-              GButton(
-                icon: LineIcons.heart,
-                text: 'Favorites',
               ),
               GButton(
                 icon: LineIcons.shoppingCart,

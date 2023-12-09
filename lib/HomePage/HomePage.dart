@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pizza_hood/HomePage/notificationUser.dart';
 import 'package:pizza_hood/HomePage/tab_bar/TabScreen/cartScreen.dart';
-import 'package:pizza_hood/HomePage/tab_bar/TabScreen/favScreen.dart';
 import 'package:pizza_hood/HomePage/tab_bar/TabScreen/homeScreen.dart';
 import 'package:pizza_hood/HomePage/tab_bar/TabScreen/profileScreen.dart';
 import 'package:pizza_hood/HomePage/tab_bar/tabBar.dart';
@@ -102,7 +101,6 @@ class _HomePageState extends State<HomePage> {
           controller: _pageController,
           children: [
             HomeScreen(), // Pass the addToCart method to HomeScreen
-            FavoritesScreen(), // Create this screen
             CartScreen(), // Pass the cartItems list to CartScreen
             ProfileScreen(), // Create this screen
           ],
