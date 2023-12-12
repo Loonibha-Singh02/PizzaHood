@@ -6,7 +6,7 @@ class CustomBTab extends StatefulWidget {
   final int currentIndex;
   final void Function(int) onTap;
 
-  CustomBTab({required this.currentIndex, required this.onTap});
+  const CustomBTab({super.key, required this.currentIndex, required this.onTap});
 
   @override
   _CustomBTabState createState() => _CustomBTabState();
@@ -17,7 +17,7 @@ class _CustomBTabState extends State<CustomBTab> {
   Widget build(BuildContext context) {
     return Container(
       height: 90,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFFFFD7BD),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(50),
@@ -35,13 +35,13 @@ class _CustomBTabState extends State<CustomBTab> {
             haptic: true,
             tabBorderRadius: 22,
             curve: Curves.decelerate,
-            duration: Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
             gap:3,
-            activeColor: Color(0xFFFFEEE1),
+            activeColor: const Color(0xFFFFEEE1),
             iconSize: 24,
-            tabBackgroundColor: Color(0xFF393E46),
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 13),
-            tabs: [
+            tabBackgroundColor: const Color(0xFF393E46),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 13),
+            tabs: const [
               GButton(
                 icon: LineIcons.home,
                 text: 'Home',

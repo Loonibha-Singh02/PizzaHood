@@ -12,14 +12,14 @@ class MushroomPage extends StatefulWidget {
 class _MushroomPageState extends State<MushroomPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFFEEE1),
+    return const Scaffold(
+      backgroundColor: Color(0xFFFFEEE1),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(300),
         child: Custom_desp(
           ImagePath: AssetImage("assets/images/Mushroom-Pizza.jpg"),
         ),
       ),
-    );;
+    );
   }
 }

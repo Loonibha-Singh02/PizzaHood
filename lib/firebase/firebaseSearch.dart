@@ -9,7 +9,7 @@ class FirebaseSearch {
     final QuerySnapshot vegSnapshot = await firestore
         .collection('Veg_Pizza')
         .where('title', isGreaterThanOrEqualTo: searchText)
-        .where('title', isLessThanOrEqualTo: searchText + '\uf8ff')
+        .where('title', isLessThanOrEqualTo: '$searchText\uf8ff')
         .get();
 
     titles.addAll(vegSnapshot.docs.map((doc) => doc['title'] as String));
@@ -17,7 +17,7 @@ class FirebaseSearch {
     final QuerySnapshot nonVegSnapshot = await firestore
         .collection('NonVeg')
         .where('title', isGreaterThanOrEqualTo: searchText)
-        .where('title', isLessThanOrEqualTo: searchText + '\uf8ff')
+        .where('title', isLessThanOrEqualTo: '$searchText\uf8ff')
         .get();
 
     titles.addAll(nonVegSnapshot.docs.map((doc) => doc['title'] as String));
@@ -25,7 +25,7 @@ class FirebaseSearch {
     final QuerySnapshot specialSnapshot = await firestore
         .collection('Special_Pizza')
         .where('title', isGreaterThanOrEqualTo: searchText)
-        .where('title', isLessThanOrEqualTo: searchText + '\uf8ff')
+        .where('title', isLessThanOrEqualTo: '$searchText\uf8ff')
         .get();
 
     titles.addAll(specialSnapshot.docs.map((doc) => doc['title'] as String));

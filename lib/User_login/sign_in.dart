@@ -189,7 +189,7 @@ class _SignInPageState extends State<SignInPage> {
         Navigator.pushNamed(context, "/Home");
       } else {
         _showErrorDialog("Invalid Email or Password");
-        print("Some error happened");
+        print("Some error happened"); 
       }
     }
   }
@@ -199,20 +199,20 @@ class _SignInPageState extends State<SignInPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(
+          title: const Text(
             "Error",
             style: TextStyle(color: Colors.red, fontSize: 25),
           ),
           content: Text(
             message,
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           ),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(
+              child: const Text(
                 "OK",
                 style: TextStyle(color: Colors.blue),
               ),

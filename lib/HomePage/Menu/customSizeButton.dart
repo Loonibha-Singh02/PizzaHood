@@ -18,25 +18,25 @@ class CustomSizeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return  ElevatedButton(
       onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xFFFCB07E),
+        minimumSize: const Size(80, 37),
+        elevation: 0,
+      ),
       child: Column(
         children: [
           Text(
             text,
-            style: TextStyle(fontSize: 13),
+            style: const TextStyle(fontSize: 13),
           ),
           if (isSelected)
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
           if (isSelected)
             Text(
-              '\Rs ${price.toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 10),
+              'Rs ${price.toStringAsFixed(2)}',
+              style: const TextStyle(fontSize: 10),
             )
         ],
-      ),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xFFFCB07E),
-        minimumSize: Size(80, 37),
-        elevation: 0,
       ),
     );
   }

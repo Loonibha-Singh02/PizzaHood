@@ -21,7 +21,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
     // Navigate to the welcome screen or login screen
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) => WelcomePage()), // Replace WelcomeScreen with your welcome/login screen
+      MaterialPageRoute(builder: (context) => const WelcomePage()), // Replace WelcomeScreen with your welcome/login screen
           (route) => false, // Clear all routes on the stack
     );
   }
@@ -63,7 +63,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => AdminNotificationScreen()),
+              MaterialPageRoute(builder: (context) => const AdminNotificationScreen()),
             );
           },
         ),
@@ -76,7 +76,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
         ],
       ),
       body: Container(
-        padding: EdgeInsets.only(top: 50),
+        padding: const EdgeInsets.only(top: 50),
         width: 500,
         height: 300,
         child: Column(
@@ -85,60 +85,60 @@ class _AdminHomePageState extends State<AdminHomePage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => UsersScreen()),
+                  MaterialPageRoute(builder: (context) => const UsersScreen()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(200, 50),
+                fixedSize: const Size(200, 50),
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.black,
               ),
-              child: Text('Users'),
+              child: const Text('Users'),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => NonVegScreen()),
+                  MaterialPageRoute(builder: (context) => const NonVegScreen()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(200, 50),
+                fixedSize: const Size(200, 50),
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.black,
               ),
-              child: Text('Non Veg'),
+              child: const Text('Non Veg'),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => VegScreen()),
+                  MaterialPageRoute(builder: (context) => const VegScreen()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(200, 50),
+                fixedSize: const Size(200, 50),
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.black,
               ),
-              child: Text('Veg'),
+              child: const Text('Veg'),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SpecialScreen()),
+                  MaterialPageRoute(builder: (context) => const SpecialScreen()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(200, 50),
+                fixedSize: const Size(200, 50),
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.black,
               ),
-              child: Text('Special'),
+              child: const Text('Special'),
             ),
           ],
         ),

@@ -81,40 +81,40 @@ class _AdminNotificationScreenState extends State<AdminNotificationScreen> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text("Clear Notifications?"),
-                    content: Text("Do you want to clear all notifications?"),
+                    title: const Text("Clear Notifications?"),
+                    content: const Text("Do you want to clear all notifications?"),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        child: Text("Cancel"),
+                        child: const Text("Cancel"),
                       ),
                       TextButton(
                         onPressed: () {
                           clearNotifications();
                           Navigator.of(context).pop();
                         },
-                        child: Text("Clear"),
+                        child: const Text("Clear"),
                       ),
                     ],
                   );
                 },
               );
             },
-            icon: Icon(Icons.clear,
+            icon: const Icon(Icons.clear,
             color: Colors.black38,),
           ),
         ],
       ),
       body: adminCartItems.isEmpty
-          ? Center(child: Text('No notification available.'))
+          ? const Center(child: Text('No notification available.'))
           : ListView.builder(
         itemCount: adminCartItems.length,
         itemBuilder: (context, index) {
           return Container(
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            padding: EdgeInsets.all(12),
+            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
@@ -124,20 +124,20 @@ class _AdminNotificationScreenState extends State<AdminNotificationScreen> {
               children: [
                 Text(
                   'Notification ${index + 1}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   adminCartItems[index],
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 15,
                     color: Colors.black54
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -145,19 +145,19 @@ class _AdminNotificationScreenState extends State<AdminNotificationScreen> {
                       onPressed: () {
                         handleOrderAccepted(index);
                       },
-                      child: Text('Order Accepted'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black38,
                       ),
+                      child: const Text('Order Accepted'),
                     ),
                     ElevatedButton(
                       onPressed: () {
                         handleOrderReady(index);
                       },
-                      child: Text('Order Ready'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black38,
                       ),
+                      child: const Text('Order Ready'),
                     ),
                   ],
                 ),

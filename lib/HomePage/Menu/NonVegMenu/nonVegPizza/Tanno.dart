@@ -11,7 +11,7 @@ class Tanno extends StatefulWidget {
 class _TannoState extends State<Tanno> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(300),
         child: Custom_desp(

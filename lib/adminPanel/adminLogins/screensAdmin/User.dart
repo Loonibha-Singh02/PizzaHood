@@ -23,12 +23,12 @@ class _UsersScreenState extends State<UsersScreen> {
 
     // Reset text field colors to black
     _nameController.text = '';
-    _nameController..text = _nameController.text;
-    _nameController..selection = TextSelection.collapsed(offset: _nameController.text.length);
+    _nameController.text = _nameController.text;
+    _nameController.selection = TextSelection.collapsed(offset: _nameController.text.length);
 
     _emailController.text = '';
-    _emailController..text = _emailController.text;
-    _emailController..selection = TextSelection.collapsed(offset: _emailController.text.length);
+    _emailController.text = _emailController.text;
+    _emailController.selection = TextSelection.collapsed(offset: _emailController.text.length);
   }
 
   Future<void> deleteUser(String userId) async {

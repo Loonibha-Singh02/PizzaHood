@@ -126,7 +126,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         // Navigate to the admin login page when the button is pressed
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => AdminWelcomePage()),
+                          MaterialPageRoute(builder: (context) => const AdminWelcomePage()),
                         );
                       },
                       child: Row(
@@ -138,10 +138,10 @@ class _WelcomePageState extends State<WelcomePage> {
                               color: const Color(0x69544D4D),
                             ),
                           ),
-                          Icon(
+                          const Icon(
                             Icons.arrow_forward,
                             size: 18, // Adjust the size as needed
-                            color: const Color(0x69544D4D), // Adjust the color if necessary
+                            color: Color(0x69544D4D), // Adjust the color if necessary
                           ),
                         ],
                       ),

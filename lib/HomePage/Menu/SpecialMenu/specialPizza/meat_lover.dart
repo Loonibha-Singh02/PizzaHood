@@ -22,7 +22,7 @@ class _MeatLoverPage extends State<MeatLoverPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-           Container(
+           SizedBox(
              height: 500,
              width: MediaQuery.of(context).size.width,
              child:  const Stack(

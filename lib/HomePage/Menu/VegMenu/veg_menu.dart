@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../cusAppBarMenu.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../custom_Listview.dart';
 
 class VegPage extends StatefulWidget {
-  const VegPage({Key? key});
+  const VegPage({Key? key}) : super(key: key);
 
   @override
   State<VegPage> createState() => _VegPageState();
@@ -26,8 +25,8 @@ class _VegPageState extends State<VegPage> {
   Widget build(BuildContext context)   {
     return Scaffold(
       backgroundColor: const Color(0xFFFFEEE1),
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
         child: CustomAppBar(
           title: 'Veg pizza',
         ),
@@ -42,7 +41,7 @@ class _VegPageState extends State<VegPage> {
             return const Text('Loading...');
           }
           var docs = snapshot.data!.docs;
-          List<Map<String, dynamic>> documentDataList = docs.map((doc) => doc.data() as Map<String, dynamic>).toList();
+          List<Map<String, dynamic>> documentDataList = docs.map((doc) => doc.data()).toList();
           return CusListview(
             documents: documentDataList,
             // onItemClick: (selectedItem) {

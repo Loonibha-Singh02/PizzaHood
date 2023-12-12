@@ -126,7 +126,7 @@ class _CusListviewState extends State<CusListview> {
                                 ),
                                 const SizedBox(height:3),
 
-                                Container(
+                                SizedBox(
                                   height: 30,
                                   child: Text(description,
                                     style: const TextStyle(
@@ -224,7 +224,7 @@ class _CusListviewState extends State<CusListview> {
                               ),
                             ),
                           ),
-                          Icon(
+                          const Icon(
                             Icons.arrow_forward,
                             size: 12,
                           )

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class VegScreen extends StatefulWidget {
+  const VegScreen({super.key});
+
   @override
   _VegScreenState createState() => _VegScreenState();
 }
@@ -50,14 +52,14 @@ class _VegScreenState extends State<VegScreen> {
         stream: FirebaseFirestore.instance.collection('Veg_Pizza').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
           return ListView(
             padding: const EdgeInsets.all(20),
             children: snapshot.data!.docs.map((doc) {
-              return Container(
+              return SizedBox(
                 height: 450,
                 child: Card(
                   elevation: 3,

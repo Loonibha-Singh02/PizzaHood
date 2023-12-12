@@ -22,7 +22,7 @@ class _PizzahoodSpecialPage extends State<PizzahoodSpecialPage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 height: 500,
                 width: MediaQuery.of(context).size.width,
                 child:  const Stack(

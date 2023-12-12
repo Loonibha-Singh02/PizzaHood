@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import '../firebase/firebaseSearch.dart';
 
 class SearchWidget extends StatefulWidget {
+  const SearchWidget({super.key});
+
   @override
   _SearchWidgetState createState() => _SearchWidgetState();
 }
@@ -39,7 +41,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             child: SizedBox(
               height: 60,
               child: CupertinoSearchTextField(
-                backgroundColor: Color(0xFFFFD7BD),
+                backgroundColor: const Color(0xFFFFD7BD),
                 onChanged: (value) {
                   setState(() {
                     searchText = value;

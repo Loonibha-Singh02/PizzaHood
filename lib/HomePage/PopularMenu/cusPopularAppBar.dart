@@ -22,14 +22,14 @@ class Custom_desp extends StatelessWidget {
            backgroundColor: Colors.transparent,
             elevation: 0 ,
             leading: IconButton(
-              icon: Icon(Icons.arrow_back_sharp),
+              icon: const Icon(Icons.arrow_back_sharp),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
            actions: [
              IconButton(
-               icon: Icon(Icons.favorite_border),
+               icon: const Icon(Icons.favorite_border),
                onPressed: () {
                  Navigator.of(context).pop();
                },

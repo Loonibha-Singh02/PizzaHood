@@ -5,7 +5,7 @@ import '../custom_Listview.dart';
 
 
 class NonVegPage extends StatefulWidget {
-  const NonVegPage({Key? key});
+  const NonVegPage({Key? key}) : super(key: key);
 
   @override
   State<NonVegPage> createState() => _NonVegPageState();
@@ -25,8 +25,8 @@ class _NonVegPageState extends State<NonVegPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFFEEE1),
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
         child: CustomAppBar(
           title: 'NonVeg pizza',
         ),
@@ -41,7 +41,7 @@ class _NonVegPageState extends State<NonVegPage> {
             return const Text('Loading...');
           }
           var docs = snapshot.data!.docs; 
-          List<Map<String, dynamic>> documentDataList = docs.map((doc) => doc.data() as Map<String, dynamic>).toList();
+          List<Map<String, dynamic>> documentDataList = docs.map((doc) => doc.data()).toList();
           return CusListview(
             documents: documentDataList,
             // onItemClick: (selectedItem) {

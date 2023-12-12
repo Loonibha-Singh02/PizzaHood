@@ -92,14 +92,14 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>UserNotification()),
+                MaterialPageRoute(builder: (context) =>const UserNotification()),
               );
             },
           ),],
         ),
         body: PageView(
           controller: _pageController,
-          children: [
+          children: const [
             HomeScreen(), // Pass the addToCart method to HomeScreen
             CartScreen(), // Pass the cartItems list to CartScreen
             ProfileScreen(), // Create this screen

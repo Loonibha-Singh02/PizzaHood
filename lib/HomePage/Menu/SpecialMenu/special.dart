@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_hood/HomePage/Menu/SpecialMenu/specialPizza/pizzahoodSpec.dart';
-import 'specialPizza/meat_lover.dart';
 import '../cusAppBarMenu.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../custom_Listview.dart';
 
 
 class SpecialPage extends StatefulWidget {
-  const SpecialPage({Key? key});
+  const SpecialPage({Key? key}) : super(key: key);
 
   @override
   State<SpecialPage> createState() => _SpecialPageState();
@@ -28,8 +26,8 @@ class _SpecialPageState extends State<SpecialPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFFEEE1),
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
         child: CustomAppBar(
           title: 'Special pizza',
         ),
@@ -44,7 +42,7 @@ class _SpecialPageState extends State<SpecialPage> {
             return const Text('Loading...');
           }
           var docs = snapshot.data!.docs;
-          List<Map<String, dynamic>> documentDataList = docs.map((doc) => doc.data() as Map<String, dynamic>).toList();
+          List<Map<String, dynamic>> documentDataList = docs.map((doc) => doc.data()).toList();
           return CusListview(
             documents: documentDataList,
             // onItemClick: (selectedItem) {

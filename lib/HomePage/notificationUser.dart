@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../adminPanel/notifier.dart';
 
 class UserNotification extends StatefulWidget {
-  const UserNotification({Key? key});
+  const UserNotification({Key? key}) : super(key: key);
 
   @override
   State<UserNotification> createState() => _UserNotificationState();
@@ -45,17 +45,17 @@ class _UserNotificationState extends State<UserNotification> {
             onPressed: () {
               Provider.of<NotificationProvider>(context, listen: false).clearNotifications();
             },
-            icon: Icon(Icons.clear,
+            icon: const Icon(Icons.clear,
             color: Colors.black54,),
           ),
         ],
       ),
       body: Container(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Consumer<NotificationProvider>(
           builder: (context, notificationProvider, _) {
             if (notificationProvider.messages.isEmpty) {
-              return Center(
+              return const Center(
                 child: Text(
                   'No notifications available.',
                   style: TextStyle(fontSize: 18.0),
@@ -68,8 +68,8 @@ class _UserNotificationState extends State<UserNotification> {
                   int index = entry.key;
                   String message = entry.value;
                   return Container(
-                    margin: EdgeInsets.symmetric(vertical: 8.0),
-                    padding: EdgeInsets.all(12.0),
+                    margin: const EdgeInsets.symmetric(vertical: 8.0),
+                    padding: const EdgeInsets.all(12.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8.0),
@@ -79,15 +79,15 @@ class _UserNotificationState extends State<UserNotification> {
                       children: [
                         Text(
                           'Notification ${index + 1}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 8.0),
+                        const SizedBox(height: 8.0),
                         Text(
                           message,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16.0,
                             color: Colors.black54,
                           ),

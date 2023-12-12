@@ -12,6 +12,8 @@ import '../../PopularMenu/custom_popular_menu.dart';
 import '../../SearchData.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -29,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SearchWidget(),
+                  const SearchWidget(),
 
                   const SizedBox(height: 40),
 

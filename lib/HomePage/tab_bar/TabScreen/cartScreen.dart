@@ -27,7 +27,7 @@ class _CartScreenState extends State<CartScreen> {
                 children: [
                   for (var item in cart.cart)
                     Container(
-                      margin: EdgeInsets.only(right: 20,top: 20, left: 20, bottom:10),
+                      margin: const EdgeInsets.only(right: 20,top: 20, left: 20, bottom:10),
                       height: 120,
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -47,22 +47,22 @@ class _CartScreenState extends State<CartScreen> {
                               children: [
                                 Text(
                                   item.title,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 20,
                                   ),
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Text(
                                   item.size,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 16,
-                                    color: const Color(0xBB53575D),
+                                    color: Color(0xBB53575D),
                                   ),
                                 ),
                                 Text('Rs ${item.price.toStringAsFixed(2)}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 16,
-                                    color: const Color(0xBB53575D),
+                                    color: Color(0xBB53575D),
                                   ),),
                               ],
                             ),
@@ -107,12 +107,12 @@ class _CartScreenState extends State<CartScreen> {
                   // );
                 },
                 style: ElevatedButton.styleFrom(
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                     fontSize: 20,
                   ),
                   elevation: 0,
                   backgroundColor: const Color(0xBB53575D),
-                  minimumSize:  Size(340, 45),
+                  minimumSize:  const Size(340, 45),
                   shape:
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
@@ -120,7 +120,7 @@ class _CartScreenState extends State<CartScreen> {
                 ),
                 child:Text(
                   'Total: Rs ${totalPrice.toStringAsFixed(2)}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,

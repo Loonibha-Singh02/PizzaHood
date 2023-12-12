@@ -12,8 +12,8 @@ class VegGreenerPage extends StatefulWidget {
 class _VegGreenerPageState extends State<VegGreenerPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFFEEE1),
+    return const Scaffold(
+      backgroundColor: Color(0xFFFFEEE1),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(300),
         child: Custom_desp(

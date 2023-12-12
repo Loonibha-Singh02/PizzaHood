@@ -20,7 +20,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     await FirebaseAuth.instance.signOut();
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => WelcomePage()),
+      MaterialPageRoute(builder: (context) => const WelcomePage()),
     );
   }
 
@@ -36,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SizedBox(height: 170), // Adjust the space for the image
+                  const SizedBox(height: 170), // Adjust the space for the image
                   StreamBuilder(
                     stream: FirebaseFirestore.instance
                         .collection("Users")
@@ -44,36 +44,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         .snapshots(),
                     builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (snapshot.hasError) {
-                        return Text("Something went wrong");
+                        return const Text("Something went wrong");
                       }
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(child: CircularProgressIndicator());
+                        return const Center(child: CircularProgressIndicator());
                       }
                       if (snapshot.data!.docs.isEmpty) {
-                        return Text("No data available");
+                        return const Text("No data available");
                       }
-                      if (snapshot != null && snapshot.data != null) {
+                      if (snapshot.data != null) {
                         var fullname = snapshot.data!.docs[0]['Full name'];
                         var email = snapshot.data!.docs[0]['Email'];
                         return Column(
                           children: [
                             Container(
-                              padding: EdgeInsets.all(20.0),
-                              margin: EdgeInsets.only(bottom: 20.0),
+                              padding: const EdgeInsets.all(20.0),
+                              margin: const EdgeInsets.only(bottom: 20.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     fullname,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                                   Text(
                                     email,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 16,
                                         color: Colors.black38
                                     ),
@@ -81,25 +81,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ],
                               ),
                             ),
-                            SizedBox(height: 80),
+                            const SizedBox(height: 80),
                             ListTile(
-                              title: Text(
+                              title: const Text(
                                 'About',
                                 style: TextStyle(fontSize: 18),
                               ),
-                              leading: Icon(Icons.info),
+                              leading: const Icon(Icons.info),
                               onTap: () {
                                 // Add functionality for About here
                                 // Implement your About screen navigation or action here
                               },
                             ),
-                            Divider(thickness: 1.2,),
+                            const Divider(thickness: 1.2,),
                             ListTile(
-                              title: Text(
+                              title: const Text(
                                 'Logout',
                                 style: TextStyle(fontSize: 18),
                               ),
-                              leading: Icon(Icons.exit_to_app),
+                              leading: const Icon(Icons.exit_to_app),
                               onTap: () {
                                 // Logout functionality
                                 _logout();
@@ -108,12 +108,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ],
                         );
                       }
-                      return Container(child: Text("oookkkk"),);
+                      return Container(child: const Text("oookkkk"),);
                     },
                   ),
                 ],
               ),
-              Positioned(
+              const Positioned(
                 top: -50,
                 left: 0,
                 right: 0,

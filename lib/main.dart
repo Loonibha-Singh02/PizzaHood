@@ -11,14 +11,13 @@ import 'HomePage/Menu/cartModel.dart';
 import 'adminPanel/adminLogins/adminHome.dart';
 import 'adminPanel/adminLogins/adminSignin.dart';
 import 'adminPanel/adminLogins/adminSignup.dart';
-import 'adminPanel/adminNotification.dart';
 import 'adminPanel/notifier.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(); // Initialize Firebase
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -41,10 +40,10 @@ class MyApp extends StatelessWidget {
               '/': (context) => const WelcomePage(),
               '/Signin': (context) => const SignInPage(),
               '/Signup': (context) => const SignUpPage(),
-              '/Home': (context) => HomePage(),
+              '/Home': (context) => const HomePage(),
               '/AdminSignin': (context) => const AdminSignInPage(),
               '/AdminSignup': (context) => const AdminSignUpPage(),
-              '/Admin': (context) => AdminHomePage(),
+              '/Admin': (context) => const AdminHomePage(),
             },
           ),
         );
