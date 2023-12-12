@@ -19,11 +19,14 @@ class _VegScreenState extends State<VegScreen> {
     final CollectionReference vegPizzaItems =
     FirebaseFirestore.instance.collection('Veg_Pizza');
 
+    int priceLarge = int.parse(_priceLargeController.text);
+    int priceMedium = int.parse(_priceMediumController.text);
+
     await vegPizzaItems.doc(itemId).update({
       'title': _titleController.text,
       'description': _descriptionController.text,
-      'priceLarge': _priceLargeController.text,
-      'priceMedium': _priceMediumController.text,
+      'priceLarge': priceLarge, // Update integer value
+      'priceMedium': priceMedium, // Update integer value
     });
 
     _titleController.clear();

@@ -19,11 +19,15 @@ class _NonVegScreenState extends State<NonVegScreen> {
     final CollectionReference nonVegItems =
     FirebaseFirestore.instance.collection('NonVeg');
 
+    // Convert text input to integers
+    int priceLarge = int.parse(_priceLargeController.text);
+    int priceMedium = int.parse(_priceMediumController.text);
+
     await nonVegItems.doc(itemId).update({
       'title': _titleController.text,
       'description': _descriptionController.text,
-      'priceLarge': _priceLargeController.text,
-      'priceMedium': _priceMediumController.text,
+      'priceLarge': priceLarge, // Update integer value
+      'priceMedium': priceMedium, // Update integer value
     });
 
     // Clear text fields after update
