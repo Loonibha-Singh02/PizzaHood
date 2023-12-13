@@ -91,8 +91,8 @@ class _CartScreenState extends State<CartScreen> {
             child: SizedBox(
               width: 200, // Set the width to match the parent width
               height: 50, // Set the desired height
-              child:  ElevatedButton(
-                onPressed: () async{
+              child: ElevatedButton(
+                onPressed: () async {
                   final cartItems = cart.cart
                       .map((item) =>
                   'Luniva Singh ordered ${item.title} - ${item.size} - ${item.price.toStringAsFixed(2)}')
@@ -101,10 +101,24 @@ class _CartScreenState extends State<CartScreen> {
                   final prefs = await SharedPreferences.getInstance();
                   await prefs.setStringList('cartData', cartItems);
 
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => AdminNotificationScreen()),
-                  // );
+                  // Show a dialog indicating successful order placement
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Order Placed'),
+                        content: Text('Your order has been placed successfully!'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text('OK'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   textStyle: const TextStyle(
@@ -112,13 +126,12 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                   elevation: 0,
                   backgroundColor: const Color(0xBB53575D),
-                  minimumSize:  const Size(340, 45),
-                  shape:
-                  RoundedRectangleBorder(
+                  minimumSize: const Size(340, 45),
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                child:Text(
+                child: Text(
                   'Total: Rs ${totalPrice.toStringAsFixed(2)}',
                   style: const TextStyle(
                     fontSize: 15,
@@ -127,12 +140,9 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                 ),
               ),
-
             ),
           ),
-
         ],
-
       ),
     );
   }

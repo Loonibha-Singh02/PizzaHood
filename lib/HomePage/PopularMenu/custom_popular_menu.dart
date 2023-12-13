@@ -88,7 +88,7 @@ class CustomListViewItem extends StatelessWidget {
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.only(left: 10),
-              child: Container(
+              child: SizedBox(
                 height: 40,
                 child: Text(description,
                   style: GoogleFonts.josefinSans(

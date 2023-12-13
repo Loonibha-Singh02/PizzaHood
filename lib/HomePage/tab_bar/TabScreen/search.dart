@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CaloriesPage extends StatefulWidget {
+  const CaloriesPage({super.key});
+
   @override
   _CaloriesPageState createState() => _CaloriesPageState();
 }
@@ -73,7 +75,7 @@ class _CaloriesPageState extends State<CaloriesPage> {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.search,
+            icon: const Icon(Icons.search,
             color: Colors.black26,),
             onPressed: () async {
               final String? selected = await showSearch(
@@ -91,7 +93,7 @@ class _CaloriesPageState extends State<CaloriesPage> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,7 +113,7 @@ class _CaloriesPageState extends State<CaloriesPage> {
                 },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
           ],
@@ -130,7 +132,7 @@ class FoodSearchDelegate extends SearchDelegate<String> {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: const Icon(Icons.clear),
         onPressed: () {
           query = '';
         },
@@ -141,7 +143,7 @@ class FoodSearchDelegate extends SearchDelegate<String> {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
       onPressed: () {
         close(context, '');
       },

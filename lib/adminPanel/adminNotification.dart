@@ -39,11 +39,49 @@ class _AdminNotificationScreenState extends State<AdminNotificationScreen> {
   void handleOrderAccepted(int index) {
     String message = 'Order Accepted for: ${adminCartItems[index]}';
     Provider.of<NotificationProvider>(context, listen: false).sendMessage(message);
+
+    // Show a dialog for Order Accepted
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Order Accepted'),
+          content: Text('Order accepted for: ${adminCartItems[index]}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void handleOrderReady(int index) {
     String message = 'Order Ready for: ${adminCartItems[index]}';
     Provider.of<NotificationProvider>(context, listen: false).sendMessage(message);
+
+    // Show a dialog for Order Ready
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Order Ready'),
+          content: Text('Order ready for: ${adminCartItems[index]}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override

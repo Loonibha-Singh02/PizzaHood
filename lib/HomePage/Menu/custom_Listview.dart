@@ -56,6 +56,23 @@ class _CusListviewState extends State<CusListview> {
       final cartModel = Provider.of<CartModel>(context, listen: false);
       cartModel.addToCart(CartItem(title: title, size: 'Large', price: priceLarge));
     }
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Success'),
+          content: Text('Item added to cart successfully!'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
 

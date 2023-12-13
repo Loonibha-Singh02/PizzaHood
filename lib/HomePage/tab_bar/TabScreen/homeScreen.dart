@@ -44,16 +44,16 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 60,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color(0xFFFFD7BD),
+                  color: const Color(0xFFFFD7BD),
                   width: 1,
                 ),
-                color: Color(0xFFFFD7BD),
+                color: const Color(0xFFFFD7BD),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
                     child: Icon(
                       Icons.search,
                       color: Color(0x69544D4D),
@@ -63,14 +63,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CaloriesPage()),
+                        MaterialPageRoute(builder: (context) => const CaloriesPage()),
                       );
                     },
                     child: Text(
                       'Search...',
                       style: GoogleFonts.josefinSans(
                         fontSize: 20,
-                        color: Color(0x69544D4D),
+                        color: const Color(0x69544D4D),
                       ),
                     ),
                   ),
@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          SizedBox(height: 15,),
+          const SizedBox(height: 15,),
           Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Column(
