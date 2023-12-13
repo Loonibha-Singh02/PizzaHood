@@ -11,7 +11,7 @@ class CustomHorizontalListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 280, // Set the desired height
+      height: 320, // Set the desired height
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: items.length,
@@ -37,13 +37,14 @@ class CustomListViewItem extends StatelessWidget {
   final double cost;
   final Widget destination;
   final String title;
+  final String description;
 
   const CustomListViewItem({
     Key? key,
     required this.imagePath,
     required this.cost,
     required this.destination,
-    required this.title,
+    required this.title, required this.description,
   }) : super(key: key);
 
   @override
@@ -72,7 +73,7 @@ class CustomListViewItem extends StatelessWidget {
                     width: 200,
              ),
            ), // Customize image size
-            const SizedBox(height: 5),
+            const SizedBox(height:8),
 
             Padding(
               padding: const EdgeInsets.only(left: 10),
@@ -84,8 +85,19 @@ class CustomListViewItem extends StatelessWidget {
               ),
             ),
 
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Container(
+                height: 40,
+                child: Text(description,
+                  style: GoogleFonts.josefinSans(
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+            ),
             const SizedBox(height: 10),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
@@ -94,6 +106,7 @@ class CustomListViewItem extends StatelessWidget {
                 ],
               ),
             ),
+
           ],
         ),
       ),
