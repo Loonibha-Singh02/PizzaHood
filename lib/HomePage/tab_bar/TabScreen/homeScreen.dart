@@ -28,7 +28,17 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 20, top: 30),
+            padding: const EdgeInsets.only(left: 60, top: 30),
+            child: Text(
+              "Find your perfect place to eat, meet and enjoy.",
+              style: GoogleFonts.aBeeZee(
+                fontSize:15,
+                color: const Color(0x69544D4D),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20, top: 20),
             child: Container(
               width: 375,
               height: 60,
@@ -68,6 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          SizedBox(height: 15,),
           Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Column(
@@ -105,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
 
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 50),
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
