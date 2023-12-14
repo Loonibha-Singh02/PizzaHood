@@ -106,14 +106,14 @@ class _CartScreenState extends State<CartScreen> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text('Order Placed'),
-                        content: Text('Your order has been placed successfully!'),
+                        title: const Text('Order Placed'),
+                        content: const Text('Your order has been placed successfully!'),
                         actions: <Widget>[
                           TextButton(
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
-                            child: Text('OK'),
+                            child: const Text('OK'),
                           ),
                         ],
                       );

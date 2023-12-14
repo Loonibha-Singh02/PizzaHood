@@ -60,14 +60,14 @@ class _CusListviewState extends State<CusListview> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Success'),
-          content: Text('Item added to cart successfully!'),
+          title: const Text('Success'),
+          content: const Text('Item added to cart successfully!'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );

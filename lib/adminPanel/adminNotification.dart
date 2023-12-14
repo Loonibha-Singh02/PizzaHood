@@ -45,14 +45,14 @@ class _AdminNotificationScreenState extends State<AdminNotificationScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Order Accepted'),
+          title: const Text('Order Accepted'),
           content: Text('Order accepted for: ${adminCartItems[index]}'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );
@@ -69,14 +69,14 @@ class _AdminNotificationScreenState extends State<AdminNotificationScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Order Ready'),
+          title: const Text('Order Ready'),
           content: Text('Order ready for: ${adminCartItems[index]}'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );
